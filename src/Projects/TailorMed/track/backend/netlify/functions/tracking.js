@@ -57,21 +57,45 @@ function initConnections() {
     !process.env.BACKEND_API_URL
   ) {
     try {
-      // 從 backend 目錄載入 Airtable 連接模組
-      const airtablePath = require('path').resolve(
-        __dirname,
-        '../../../database/airtable'
-      );
-      console.log('🔧 嘗試載入 Airtable 模組:', airtablePath);
-
-      // 清除緩存，強制重新載入模組（確保使用最新的環境變數）
-      const resolvedPath = require.resolve(airtablePath);
-      if (require.cache[resolvedPath]) {
-        delete require.cache[resolvedPath];
-        console.log('  ✅ 已清除模組緩存');
+      // 在 Netlify Function 環境中，優先使用同目錄下的 database 模組
+      // 如果不存在，則嘗試使用相對路徑
+      const path = require('path');
+      const fs = require('fs');
+      
+      // 在 Netlify 部署環境中，直接使用相對路徑 require
+      // airtable.js 應該在同一個目錄下
+      try {
+        // 先嘗試直接 require（最簡單的方式）
+        airtableConnection = require('./airtable');
+        console.log('✅ 已載入 Airtable 連接模組（直接 require）');
+      } catch (requireError) {
+        // 如果直接 require 失敗，嘗試使用完整路徑
+        console.log('⚠️ 直接 require 失敗，嘗試使用完整路徑:', requireError.message);
+        const localPath = path.join(__dirname, 'airtable.js');
+        const fallbackPath = path.resolve(__dirname, '../../../database/airtable.js');
+        
+        if (fs.existsSync(localPath)) {
+          // 清除緩存
+          if (require.cache[localPath]) {
+            delete require.cache[localPath];
+          }
+          airtableConnection = require(localPath);
+          console.log('✅ 已載入 Airtable 連接模組（使用完整路徑）:', localPath);
+        } else if (fs.existsSync(fallbackPath)) {
+          if (require.cache[fallbackPath]) {
+            delete require.cache[fallbackPath];
+          }
+          airtableConnection = require(fallbackPath);
+          console.log('✅ 已載入 Airtable 連接模組（使用備用路徑）:', fallbackPath);
+        } else {
+          console.error('❌ 無法找到 airtable 模組，嘗試的路徑:');
+          console.error('  - ./airtable (相對路徑)');
+          console.error('  -', localPath);
+          console.error('  -', fallbackPath);
+          console.error('  - __dirname:', __dirname);
+          throw new Error(`Cannot find airtable module. Checked: ./airtable, ${localPath}, ${fallbackPath}`);
+        }
       }
-
-      airtableConnection = require(airtablePath);
       console.log('✅ 已載入 Airtable 連接模組');
       console.log(
         '✅ AIRTABLE_SHIPMENTS_TABLE:',
@@ -140,9 +164,13 @@ exports.handler = async (event, context) => {
 
   const { httpMethod, path, queryStringParameters, body } = event;
 
+  // 記錄 path 以便調試
+  console.log('🔍 Event path:', path);
+  console.log('🔍 Event queryStringParameters:', queryStringParameters);
+
   try {
-    // 處理 /api/health 端點
-    if (path.includes('/api/health')) {
+    // 處理 /api/health 端點（支援重定向後的 path）
+    if (path.includes('/api/health') || path.includes('/health')) {
       return {
         statusCode: 200,
         headers,
@@ -157,10 +185,13 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // 處理 /api/tracking 和 /api/tracking-public 端點
+    // 處理 /api/tracking 和 /api/tracking-public 端點（支援重定向後的 path）
+    // Netlify 重定向後，path 可能是 /.netlify/functions/tracking
     if (
       path.includes('/api/tracking') ||
-      path.includes('/api/tracking-public')
+      path.includes('/api/tracking-public') ||
+      path.includes('/.netlify/functions/tracking') ||
+      path === '/tracking'
     ) {
       let orderNo, trackingNo;
 
@@ -218,13 +249,45 @@ exports.handler = async (event, context) => {
         !process.env.BACKEND_API_URL
       ) {
         try {
-          const airtablePath = require('path').resolve(
-            __dirname,
-            '../../../database/airtable'
-          );
-          // 清除緩存，強制重新載入模組
-          delete require.cache[require.resolve(airtablePath)];
-          airtableConnection = require(airtablePath);
+          // 在 Netlify Function 環境中，優先使用同目錄下的 database 模組
+          // 如果不存在，則嘗試使用相對路徑
+          const path = require('path');
+          const fs = require('fs');
+          
+          // 在 Netlify 部署環境中，直接使用相對路徑 require
+          // airtable.js 應該在同一個目錄下
+          try {
+            // 先嘗試直接 require（最簡單的方式）
+            airtableConnection = require('./airtable');
+            console.log('✅ 已載入 Airtable 連接模組（在 handler 中，直接 require）');
+          } catch (requireError) {
+            // 如果直接 require 失敗，嘗試使用完整路徑
+            console.log('⚠️ 直接 require 失敗，嘗試使用完整路徑:', requireError.message);
+            const localPath = path.join(__dirname, 'airtable.js');
+            const fallbackPath = path.resolve(__dirname, '../../../database/airtable.js');
+            
+            if (fs.existsSync(localPath)) {
+              // 清除緩存
+              if (require.cache[localPath]) {
+                delete require.cache[localPath];
+              }
+              airtableConnection = require(localPath);
+              console.log('✅ 已載入 Airtable 連接模組（在 handler 中，使用完整路徑）:', localPath);
+            } else if (fs.existsSync(fallbackPath)) {
+              if (require.cache[fallbackPath]) {
+                delete require.cache[fallbackPath];
+              }
+              airtableConnection = require(fallbackPath);
+              console.log('✅ 已載入 Airtable 連接模組（在 handler 中，使用備用路徑）:', fallbackPath);
+            } else {
+              console.error('❌ 無法找到 airtable 模組，嘗試的路徑:');
+              console.error('  - ./airtable (相對路徑)');
+              console.error('  -', localPath);
+              console.error('  -', fallbackPath);
+              console.error('  - __dirname:', __dirname);
+              throw new Error(`Cannot find airtable module. Checked: ./airtable, ${localPath}, ${fallbackPath}`);
+            }
+          }
           console.log('✅ 已載入 Airtable 連接模組（在 handler 中）');
         } catch (error) {
           console.log('⚠️ Airtable 連接模組載入失敗:', error.message);

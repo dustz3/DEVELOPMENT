@@ -2,17 +2,22 @@
 
 [build]
   # 建置命令 - 編譯 Pug 和 Stylus
-  command = "cd src/Projects/TailorMed/track && node compile.js"
+  command = "node compile.js"
   
   # 發布目錄（相對於 repository root）
-  publish = "dist/Projects/TailorMed/track"
+  publish = "dist"
   
   # Netlify Functions 目錄（相對於 repository root）
-  functions = "src/Projects/TailorMed/track/backend/netlify/functions"
+  functions = "backend/netlify/functions"
 
 # Node.js 版本（Netlify 預設使用 Node 18）
 [build.environment]
   NODE_VERSION = "18"
+
+# Functions 打包設定
+[functions]
+  # 使用 esbuild 打包，確保所有依賴都被包含
+  node_bundler = "esbuild"
 
 # 環境變數（生產環境在 Netlify Dashboard 設定）
 # 本地開發時從 .env 檔案讀取（backend/.env）
@@ -66,3 +71,4 @@
     X-Content-Type-Options = "nosniff"
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
+

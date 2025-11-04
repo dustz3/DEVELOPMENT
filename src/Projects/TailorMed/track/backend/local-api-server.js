@@ -88,12 +88,13 @@ const server = http.createServer(async (req, res) => {
         const timeline = await findTimeline(trackingNo, shipment._raw || shipment);
         console.log('  Timeline 事件數:', timeline ? timeline.length : 0);
 
-        // 返回結果
+        // 返回結果（排除 _raw 欄位，避免 JSON 序列化問題）
+        const { _raw, ...shipmentWithoutRaw } = shipment;
         res.writeHead(200);
         res.end(JSON.stringify({
           success: true,
           data: {
-            ...shipment,
+            ...shipmentWithoutRaw,
             transportType: shipment.transportType || '', // 確保包含 transportType
             timeline: (timeline || []).map((item) => ({
               step: item.step,

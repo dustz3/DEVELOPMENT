@@ -9,11 +9,8 @@ const TEMPLATE_DIR = path.join(FRONTEND_DIR, 'Templates');
 const STYLE_DIR = path.join(FRONTEND_DIR, 'Styles');
 const ASSETS_DIR = path.join(FRONTEND_DIR, 'Assets');
 const JS_SOURCE_DIR = path.join(FRONTEND_DIR, 'Javascript');
-// 編譯到專案根目錄的 dist/Projects/TailorMed/track
-const DIST_DIR = path.join(
-  ROOT_DIR,
-  '../../../../dist/Projects/TailorMed/track'
-);
+// 編譯到專案根目錄的 dist（track 作為獨立 repository）
+const DIST_DIR = path.join(ROOT_DIR, 'dist');
 // 源碼使用 Javascript（大寫），編譯後使用 js（小寫）
 const JS_DIST_DIR = path.join(DIST_DIR, 'js');
 
@@ -156,19 +153,12 @@ if (fs.existsSync(JS_SOURCE_DIR)) {
 
 // 4. 複製靜態資源
 console.log('📦 複製靜態資源...');
-// 首先複製 track 專案的 Assets
+// 複製 track 專案的 Assets（包含所有需要的圖片）
 if (fs.existsSync(ASSETS_DIR)) {
   copyDir(ASSETS_DIR, path.join(DIST_DIR, 'images'));
   console.log('  ✅ 已複製 track Assets 到 images/');
 } else {
   console.warn('  ⚠️ 未找到 track Assets 目錄');
-}
-
-// 然後複製父專案的 Assets（包含共用的圖片）
-const PARENT_ASSETS_DIR = path.join(ROOT_DIR, '../../Assets');
-if (fs.existsSync(PARENT_ASSETS_DIR)) {
-  copyDir(PARENT_ASSETS_DIR, path.join(DIST_DIR, 'images'));
-  console.log('  ✅ 已複製父專案 Assets 到 images/');
 }
 
 console.log('✅ 靜態資源已就緒');
