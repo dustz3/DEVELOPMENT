@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TailorMed｜貨件追蹤系統</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-    <style>
+doctype html
+html(lang="zh-TW")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title TailorMed｜貨件追蹤系統
+    link(rel="preconnect", href="https://fonts.googleapis.com")
+    link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap", rel="stylesheet")
+    style.
       * {
         margin: 0;
         padding: 0;
@@ -141,31 +141,25 @@
           align-items: center;
         }
       }
-    </style>
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container">
-        <div class="brand"><img class="brand-logo" src="./images/logo.png" alt="TailorMed"></div>
-      </div>
-    </header>
-    <main class="main-content">
-      <div class="construction-content">
-        <div class="construction-icon">🚧</div>
-        <h1 class="construction-title">Under Construction</h1>
-        <p class="construction-subtitle">We're building something amazing for you!</p>
-        <div class="construction-message">
-          <p>Our new shipment tracking system is currently under development. </p>
-          <p>We're working hard to bring you the best experience possible.</p>
-          <p>Please check back soon!</p>
-        </div>
-        <div class="test-links"><a class="test-link" href="./basic.html">Basic</a><a class="test-link" href="./standard.html">Standard</a></div>
-      </div>
-    </main>
-    <footer class="site-footer">
-      <div class="container">
-        <p class="site-footer__copy">© 2025 TailorMed. All Rights Reserved.</p>
-      </div>
-    </footer>
-  </body>
-</html>
+  body
+    header.site-header
+      .container
+        .brand
+          img.brand-logo(src="./images/logo.png", alt="TailorMed")
+
+    main.main-content
+      .construction-content
+        .construction-icon 🚧
+        h1.construction-title Under Construction
+        p.construction-subtitle We're building something amazing for you!
+        .construction-message
+          p Our new shipment tracking system is currently under development. 
+          p We're working hard to bring you the best experience possible.
+          p Please check back soon!
+        .test-links
+          a.test-link(href="./basic.html") Basic
+          a.test-link(href="./standard.html") Standard
+
+    footer.site-footer
+      .container
+        p.site-footer__copy © 2025 TailorMed. All Rights Reserved.

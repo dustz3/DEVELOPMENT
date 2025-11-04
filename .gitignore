@@ -33,3 +33,6 @@ build/
 coverage/
 .nyc_output/
 
+
+# Local Netlify folder
+.netlify

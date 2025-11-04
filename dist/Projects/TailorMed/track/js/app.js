@@ -49,9 +49,17 @@ async function fetchTrackingData(orderNo, trackingNo) {
   const startTime = Date.now();
   
   try {
-    const response = await fetch(
-      `${API_BASE_URL}/tracking?orderNo=${encodeURIComponent(orderNo)}&trackingNo=${encodeURIComponent(trackingNo)}`
-    );
+    // 使用 POST 方法呼叫 API（Netlify Functions 支援 POST）
+    const response = await fetch(`${API_BASE_URL}/tracking`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        orderNo: orderNo,
+        trackingNo: trackingNo
+      })
+    });
 
     if (!response.ok) {
       if (response.status === 404) {
