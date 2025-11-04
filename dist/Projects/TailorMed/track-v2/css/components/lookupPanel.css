@@ -1,0 +1,118 @@
+.tracking-lookup-panel {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 5px 10px rgba(12,48,88,0.4);
+  padding: 32px 40px;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  z-index: 2;
+}
+.tracking-lookup-panel .summary-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #143463;
+}
+.tracking-lookup-panel .summary-search {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 24px;
+  background: rgba(223,234,243,0.15);
+  border: 1px solid rgba(37,99,235,0.12);
+  border-radius: 12px;
+}
+.tracking-lookup-panel .summary-search .search-hint {
+  font-size: 0.95rem;
+  color: #143463;
+}
+.tracking-lookup-panel .summary-search .summary-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.tracking-lookup-panel .summary-search .summary-form .form-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+@media (max-width: 992px) {
+  .tracking-lookup-panel .summary-search .summary-form .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+.tracking-lookup-panel .summary-search .summary-form .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tracking-lookup-panel .summary-search .summary-form .input-group .input-label {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: #143463;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.tracking-lookup-panel .summary-search .summary-form .input-group input {
+  padding: 12px 14px;
+  border: 1px solid rgba(15,23,42,0.15);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+.tracking-lookup-panel .summary-search .summary-form .input-group input::placeholder {
+  color: #ccc;
+}
+.tracking-lookup-panel .summary-search .summary-form .input-group input:focus {
+  border-color: #bb2749;
+  box-shadow: 0 0 0 3px rgba(187,39,73,0.18);
+  outline: none;
+}
+.tracking-lookup-panel .summary-search .summary-form .form-helper {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0;
+}
+.tracking-lookup-panel .summary-search .summary-form .form-helper .contact-phone {
+  color: #bb2749;
+  font-weight: 600;
+}
+.tracking-lookup-panel .summary-search .summary-form button.btn--primary {
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  border: none;
+  height: 100%;
+  border-radius: 10px;
+}
+@media (max-width: 768px) {
+  .tracking-lookup-panel {
+    width: 100%;
+    padding: 28px 24px;
+  }
+  .tracking-lookup-panel .summary-search {
+    padding: 0;
+    background: none;
+    border: none;
+  }
+  .tracking-lookup-panel .summary-search .search-hint {
+    display: none;
+  }
+  .tracking-lookup-panel .summary-search .summary-form .form-row {
+    grid-template-columns: 1fr;
+  }
+  .tracking-lookup-panel .summary-search .summary-form .input-group input {
+    width: 100%;
+  }
+  .tracking-lookup-panel .summary-search .summary-form button.btn--primary {
+    width: 100%;
+    padding: 14px 0;
+  }
+  .tracking-lookup-panel .summary-search .summary-form .form-helper {
+    display: none;
+  }
+}

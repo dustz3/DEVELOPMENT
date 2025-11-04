@@ -1,0 +1,92 @@
+.results-panel .timeline-track-container .timeline-events {
+  position: absolute;
+  top: 22%;
+  left: -16px;
+  right: -16px;
+  height: 16px;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+.results-panel .timeline-track-container .timeline-events .timeline-event {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background: secondary-color;
+  border-radius: 50%;
+  border: 1px solid base-white;
+  z-index: 3;
+}
+.results-panel .timeline-track-container .timeline-events .timeline-event:nth-child(1) {
+  left: 57.5%;
+}
+.results-panel .timeline-track-container .timeline-events .timeline-event:nth-child(2) {
+  left: 74%;
+}
+.results-panel .timeline-track-container .timeline-events .timeline-event .event-tag {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 80px;
+  z-index: 5;
+}
+.results-panel .timeline-track-container .timeline-events .timeline-event .event-tag::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 80px;
+  background: secondary-color;
+  z-index: 4;
+}
+.results-panel .timeline-track-container .timeline-events .timeline-event .event-tag .event-tag-text {
+  background: secondary-color;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: normal;
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.results-panel .timeline-track-container.timeline-import_export .timeline-events .timeline-event:nth-child(1) {
+  left: 57%;
+}
+.results-panel .timeline-track-container.timeline-import_export .timeline-events .timeline-event:nth-child(2) {
+  left: 73.5%;
+}
+.results-panel .timeline-track-container.timeline-import_export .timeline-events .event-dry-ice-terminal {
+  left: 57% !important;
+}
+.results-panel .timeline-track-container.timeline-import_export .timeline-events .event-dry-ice-refilled {
+  left: 73.5% !important;
+}
+.results-panel .timeline-track-container.timeline-order_completion .timeline-events .timeline-event:nth-child(1) {
+  left: 57.14%;
+}
+.results-panel .timeline-track-container.timeline-order_completion .timeline-events .timeline-event:nth-child(2) {
+  left: 71.43%;
+}
+.results-panel .timeline-track-container.timeline-order_completion .timeline-events .event-dry-ice-terminal {
+  left: 57.14% !important;
+}
+.results-panel .timeline-track-container.timeline-order_completion .timeline-events .event-dry-ice-refilled {
+  left: 71.43% !important;
+}
+.results-panel .timeline-track-container.timeline-domestic .timeline-events .timeline-event:nth-child(1) {
+  left: 50%;
+}
+.results-panel .timeline-track-container.timeline-domestic .timeline-events .timeline-event:nth-child(2) {
+  left: 75%;
+}
+.results-panel .timeline-track-container.timeline-domestic .timeline-events .event-dry-ice-terminal {
+  left: 50% !important;
+}
+.results-panel .timeline-track-container.timeline-domestic .timeline-events .event-dry-ice-refilled {
+  left: 75% !important;
+}

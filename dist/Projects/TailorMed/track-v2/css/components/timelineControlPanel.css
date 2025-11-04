@@ -1,0 +1,140 @@
+.timeline-control-panel {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 20px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.timeline-control-panel .control-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.timeline-control-panel .control-sections {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 20px;
+}
+.timeline-control-panel .control-sections .control-section {
+  flex: 1;
+}
+.timeline-control-panel .control-sections .control-section .section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e9ecef;
+  text-align: center;
+}
+.timeline-control-panel .control-sections .control-section .control-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+.timeline-control-panel .control-sections .control-btn {
+  background: #fff;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #495057;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+  text-align: center;
+}
+.timeline-control-panel .control-sections .control-btn:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.timeline-control-panel .control-sections .control-btn.active {
+  background: primary-color;
+  border-color: primary-color;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(52,144,220,0.3);
+}
+.timeline-control-panel .control-sections .control-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.timeline-control-panel .control-sections .event-control-btn {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #495057;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 60px;
+  text-align: center;
+}
+.timeline-control-panel .control-sections .event-control-btn:hover {
+  background: #e9ecef;
+  border-color: #dee2e6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.timeline-control-panel .control-sections .event-control-btn.active {
+  background: #97d3df;
+  border-color: #97d3df;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(151,211,223,0.3);
+}
+.timeline-control-panel .control-sections .event-control-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.timeline-control-panel .control-info {
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px solid #e9ecef;
+}
+.timeline-control-panel .control-info .info-text {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 8px;
+}
+.timeline-control-panel .control-info .current-status {
+  font-size: 14px;
+  font-weight: 500;
+  color: #495057;
+}
+.timeline-control-panel .control-info .current-status .status-value {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .timeline-control-panel {
+    padding: 16px;
+    margin: 16px 0;
+  }
+  .timeline-control-panel .control-sections {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .timeline-control-panel .control-sections .control-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .timeline-control-panel .control-sections .control-buttons .control-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+  .timeline-control-panel .control-sections .control-buttons .event-control-btn {
+    width: 100%;
+    max-width: 120px;
+  }
+}

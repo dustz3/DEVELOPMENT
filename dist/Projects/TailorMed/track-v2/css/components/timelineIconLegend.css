@@ -1,0 +1,57 @@
+.results-panel .timeline-content .timeline-icon-legend {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+.results-panel .timeline-content .timeline-icon-legend .legend-items-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  row-gap: 1rem;
+}
+.results-panel .timeline-content .timeline-icon-legend .legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+.results-panel .timeline-content .timeline-icon-legend .legend-item .legend-icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.results-panel .timeline-content .timeline-icon-legend .legend-item .legend-icon img {
+  width: 80%;
+  height: 100%;
+  object-fit: contain;
+}
+.results-panel .timeline-content .timeline-icon-legend .legend-item .legend-text {
+  font-size: 0.9rem;
+  color: #999;
+  line-height: 1.2;
+  flex: 1;
+  min-width: 0;
+}
+@media (max-width: 768px) {
+  .results-panel .timeline-content .timeline-icon-legend {
+    margin-top: 1.5rem;
+    padding: 1rem;
+  }
+  .results-panel .timeline-content .timeline-icon-legend .legend-items-container {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .results-panel .timeline-content .timeline-icon-legend .legend-item {
+    max-width: none;
+    justify-content: flex-start;
+  }
+  .results-panel .timeline-content .timeline-icon-legend .legend-item .legend-text {
+    font-size: 0.85rem;
+  }
+}
