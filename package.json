@@ -1,9 +1,10 @@
 {
-  "name": "tailormed-tracking-frontend",
+  "name": "tailormed-monorepo",
   "version": "1.0.0",
-  "description": "TailorMed 貨件追蹤前端",
+  "description": "TailorMed 多專案倉庫",
   "scripts": {
-    "build": "node compile.js"
+    "build:tailormed": "node compile-tailormed.js",
+    "build:permission-matrix": "node compile-permission-matrix.js"
   },
   "dependencies": {
     "pug": "^3.0.2",
