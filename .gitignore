@@ -41,3 +41,4 @@ coverage/
 
 # track 專案是獨立的 repository，不應該被根目錄追蹤
 src/Projects/TailorMed/track/
+src/Projects/TailorMed/feedback/
