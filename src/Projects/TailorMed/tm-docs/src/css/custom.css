@@ -1,0 +1,728 @@
+/**
+ * TailorMed 文檔網站自訂樣式
+ * 
+ * 主要顏色：
+ * - Primary: #143463 (深藍色)
+ * - Secondary: #97d3df (淺藍色)
+ * - Accent: #bb2749 (紅色)
+ */
+
+/* TailorMed 品牌顏色變數 */
+:root {
+  /* 主要顏色 - TailorMed 深藍色 */
+  --ifm-color-primary: #143463;
+  --ifm-color-primary-dark: #0f2749;
+  --ifm-color-primary-darker: #0d1f3a;
+  --ifm-color-primary-darkest: #0a172b;
+  --ifm-color-primary-light: #1a4a7d;
+  --ifm-color-primary-lighter: #1d5289;
+  --ifm-color-primary-lightest: #2562a5;
+  
+  /* 次要顏色 - 淺藍色 */
+  --ifm-color-secondary: #97d3df;
+  --ifm-color-secondary-dark: #7bc4d3;
+  --ifm-color-secondary-darker: #6fbecf;
+  --ifm-color-secondary-darkest: #4fa0b3;
+  --ifm-color-secondary-light: #a3d9e3;
+  --ifm-color-secondary-lighter: #afdfe7;
+  --ifm-color-secondary-lightest: #c7ebf1;
+  
+  /* 強調顏色 - 紅色 */
+  --ifm-color-accent: #bb2749;
+  
+  /* 其他設定 */
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  
+  /* 字體設定 */
+  --ifm-font-family-base: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* 深色模式 - 使用較亮的藍色以確保可讀性 */
+[data-theme='dark'] {
+  --ifm-color-primary: #4a7db8;
+  --ifm-color-primary-dark: #3d6ba3;
+  --ifm-color-primary-darker: #37639a;
+  --ifm-color-primary-darkest: #2d5080;
+  --ifm-color-primary-light: #578fc5;
+  --ifm-color-primary-lighter: #5f97cd;
+  --ifm-color-primary-lightest: #75a9d6;
+  
+  --ifm-color-secondary: #7bc4d3;
+  --ifm-color-secondary-dark: #6fbecf;
+  --ifm-color-secondary-darker: #69b8ca;
+  --ifm-color-secondary-darkest: #4fa0b3;
+  --ifm-color-secondary-light: #87cae7;
+  --ifm-color-secondary-lighter: #93d0eb;
+  --ifm-color-secondary-lightest: #abdcf3;
+  
+  --ifm-color-accent: #e85a7a;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   TailorMed Navbar 自訂樣式
+   ============================================ */
+
+/* Navbar 主容器 */
+.navbar {
+  background-color: var(--ifm-color-primary);
+  box-shadow: 0 2px 8px rgba(20, 52, 99, 0.15);
+  padding: 0.75rem 1rem;
+  min-height: 70px;
+}
+
+/* Navbar 品牌 Logo 和標題 */
+.navbar__brand {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-right: 2rem;
+  transition: color 0.2s ease;
+}
+
+.navbar__brand:hover {
+  color: var(--ifm-color-secondary);
+  text-decoration: none;
+}
+
+.navbar__logo {
+  height: 32px;
+  margin-right: 0.75rem;
+}
+
+/* Navbar 連結樣式 */
+.navbar__item {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.navbar__item:hover {
+  color: var(--ifm-color-secondary);
+  background-color: rgba(151, 211, 223, 0.1);
+  border-radius: 6px;
+}
+
+/* Navbar 連結（active 狀態） */
+.navbar__link--active {
+  color: var(--ifm-color-secondary);
+  font-weight: 600;
+  border-bottom: 2px solid var(--ifm-color-secondary);
+  padding-bottom: 0.3rem;
+}
+
+.navbar__link--active:hover {
+  color: var(--ifm-color-secondary-light);
+  border-bottom-color: var(--ifm-color-secondary-light);
+}
+
+/* Navbar 下拉選單 */
+.navbar__dropdown {
+  background-color: #ffffff;
+  border: 1px solid rgba(20, 52, 99, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(20, 52, 99, 0.15);
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.navbar__dropdown__link {
+  color: var(--ifm-color-primary);
+  padding: 0.5rem 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.navbar__dropdown__link:hover {
+  background-color: rgba(20, 52, 99, 0.05);
+  color: var(--ifm-color-primary-dark);
+}
+
+.navbar__dropdown__link--active {
+  background-color: rgba(20, 52, 99, 0.1);
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* Navbar 搜尋框 */
+.navbar__search-input {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.navbar__search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.navbar__search-input:focus {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: var(--ifm-color-secondary);
+  outline: none;
+}
+
+/* 隱藏所有搜尋欄中的快捷鍵提示（Ctrl K） */
+.DocSearch-Button-Keys,
+.DocSearch-Button-Key,
+.navbar__search .DocSearch-Button-Keys,
+.navbar__search .DocSearch-Button-Key,
+.navbar__search-input + [class*="Key"],
+.navbar__search [class*="Button-Keys"],
+.navbar__search [class*="Button-Key"],
+[class*="DocSearch-Button-Keys"],
+[class*="DocSearch-Button-Key"],
+[class*="search"] [class*="Key"],
+[class*="search"] [class*="Keys"],
+/* 針對本地搜尋插件的快捷鍵提示 */
+[class*="search-local"] [class*="Key"],
+[class*="search-local"] [class*="Keys"],
+/* 更廣泛的選擇器 */
+button[class*="DocSearch"] [class*="Key"],
+button[class*="DocSearch"] [class*="Keys"],
+.DocSearch-Button > [class*="Key"],
+.DocSearch-Button > [class*="Keys"],
+/* 針對所有可能的快捷鍵容器 */
+.DocSearch-Button span[class*="Key"],
+.DocSearch-Button div[class*="Key"],
+.DocSearch-Button kbd,
+button[aria-label*="Search"] [class*="Key"],
+button[aria-label*="Search"] kbd {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0) !important;
+}
+
+/* 針對可能的文字內容 */
+.DocSearch-Button::after {
+  content: none !important;
+}
+
+/* 如果快捷鍵是文字節點，使用更強力的方式 */
+.DocSearch-Button {
+  /* 確保按鈕內沒有顯示快捷鍵的空間 */
+}
+
+/* 針對所有可能的快捷鍵顯示方式 - 最強力的隱藏 */
+*[class*="DocSearch"] *[class*="Key"],
+*[class*="DocSearch"] *[class*="Keys"],
+*[class*="DocSearch"] kbd,
+*[class*="search"] *[class*="Key"],
+*[class*="search"] *[class*="Keys"],
+*[class*="search"] kbd,
+button[class*="search"] *[class*="Key"],
+button[class*="search"] *[class*="Keys"],
+button[class*="search"] kbd {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0) !important;
+  overflow: hidden !important;
+}
+
+/* 針對可能的 SVG 圖標 */
+*[class*="DocSearch"] svg[class*="Key"],
+*[class*="search"] svg[class*="Key"] {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* 隱藏首頁的 Navbar 搜尋欄（因為 Hero 區塊已有搜尋功能） */
+/* 只針對 navbar 內的搜尋欄，不影響 Hero 區塊的搜尋欄 */
+body.homepage .navbar .navbar__search,
+body.homepage .navbar .navbar__search-input,
+body.homepage .navbar .DocSearch-Button,
+body.homepage .navbar [class*="DocSearch"],
+body.homepage .navbar [class*="search"] {
+  display: none !important;
+}
+
+/* 使用更通用的方式：檢查路徑 */
+/* 如果 body 有 data-path 屬性且為根路徑，只隱藏 navbar 內的搜尋欄 */
+body[data-path="/"] .navbar .navbar__search,
+body[data-path="/"] .navbar .navbar__search-input,
+body[data-path="/"] .navbar .DocSearch-Button,
+body[data-path="/"] .navbar [class*="DocSearch"] {
+  display: none !important;
+}
+
+/* Navbar 切換按鈕（手機版） */
+.navbar__toggle {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar__toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--ifm-color-secondary);
+}
+
+/* Navbar 側邊欄（手機版） */
+.navbar-sidebar {
+  background-color: var(--ifm-color-primary);
+}
+
+.navbar-sidebar__item {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar-sidebar__item:hover {
+  background-color: rgba(151, 211, 223, 0.1);
+  color: var(--ifm-color-secondary);
+}
+
+/* 深色模式下的 Navbar */
+[data-theme='dark'] .navbar {
+  background-color: var(--ifm-color-primary-darkest);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .navbar__item {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme='dark'] .navbar__item:hover {
+  color: var(--ifm-color-secondary-light);
+  background-color: rgba(123, 196, 211, 0.15);
+}
+
+[data-theme='dark'] .navbar__link--active {
+  color: var(--ifm-color-secondary-light);
+  border-bottom-color: var(--ifm-color-secondary-light);
+}
+
+[data-theme='dark'] .navbar__dropdown {
+  background-color: var(--ifm-background-surface-color);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .navbar__search-input {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme='dark'] .navbar__search-input:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--ifm-color-secondary-light);
+}
+
+/* 連結顏色使用次要顏色 */
+a {
+  color: var(--ifm-color-primary);
+}
+
+a:hover {
+  color: var(--ifm-color-primary-dark);
+}
+
+/* 按鈕樣式 */
+.button--primary {
+  background-color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+}
+
+.button--primary:hover {
+  background-color: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+}
+
+.button--secondary {
+  background-color: var(--ifm-color-secondary);
+  border-color: var(--ifm-color-secondary);
+  color: var(--ifm-color-primary);
+}
+
+.button--secondary:hover {
+  background-color: var(--ifm-color-secondary-dark);
+  border-color: var(--ifm-color-secondary-dark);
+}
+
+/* ============================================
+   TailorMed 文檔內容樣式
+   ============================================ */
+
+/* 文檔頁面主容器 */
+.markdown {
+  color: var(--ifm-font-color-base);
+}
+
+/* 標題樣式 */
+.markdown h1 {
+  color: var(--ifm-color-primary);
+  font-weight: 700;
+  border-bottom: 2px solid var(--ifm-color-primary-light);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.markdown h2 {
+  color: var(--ifm-color-primary-dark);
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.markdown h3 {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.markdown h4 {
+  color: var(--ifm-color-primary-dark);
+  font-weight: 500;
+}
+
+/* 段落文字 */
+.markdown p {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* 強調文字 */
+.markdown strong {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+.markdown em {
+  color: var(--ifm-color-primary-dark);
+  font-style: italic;
+}
+
+/* 連結樣式 */
+.markdown a {
+  color: var(--ifm-color-primary);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.markdown a:hover {
+  color: var(--ifm-color-primary-dark);
+}
+
+/* 引用區塊 */
+.markdown blockquote {
+  border-left: 4px solid var(--ifm-color-primary);
+  background-color: rgba(20, 52, 99, 0.05);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 4px;
+}
+
+.markdown blockquote p {
+  color: var(--ifm-color-primary-dark);
+  margin-bottom: 0;
+}
+
+/* 列表樣式 */
+.markdown ul,
+.markdown ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.markdown li {
+  margin-bottom: 0.5rem;
+  line-height: 1.8;
+}
+
+.markdown li::marker {
+  color: var(--ifm-color-primary);
+}
+
+/* 程式碼區塊 */
+.markdown code {
+  background-color: rgba(20, 52, 99, 0.1);
+  color: var(--ifm-color-primary-dark);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+/* 表格樣式 */
+.markdown table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.markdown table th {
+  background-color: var(--ifm-color-primary);
+  color: #ffffff;
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.markdown table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(20, 52, 99, 0.1);
+}
+
+.markdown table tr:hover {
+  background-color: rgba(20, 52, 99, 0.05);
+}
+
+/* 自訂文字顏色類別（可在 Markdown 中使用） */
+.text-primary {
+  color: var(--ifm-color-primary) !important;
+}
+
+.text-secondary {
+  color: var(--ifm-color-secondary-dark) !important;
+}
+
+.text-accent {
+  color: var(--ifm-color-accent) !important;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+/* 自訂背景顏色類別 */
+.bg-primary {
+  background-color: var(--ifm-color-primary) !important;
+  color: #ffffff !important;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.bg-secondary {
+  background-color: var(--ifm-color-secondary-lightest) !important;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+/* 間距工具類別（可在 Markdown 中使用） */
+/* 注意：在 Markdown 中使用時，建議使用 <br> 標籤或直接使用 style */
+.spacing-xs {
+  margin-bottom: 0.5rem !important;
+  display: block;
+}
+
+.spacing-sm {
+  margin-bottom: 1rem !important;
+  display: block;
+}
+
+.spacing-md {
+  margin-bottom: 2rem !important;
+  display: block;
+}
+
+.spacing-lg {
+  margin-bottom: 3rem !important;
+  display: block;
+}
+
+.spacing-xl {
+  margin-bottom: 4rem !important;
+  display: block;
+}
+
+/* 使用 <br> 標籤的樣式增強 */
+.markdown br {
+  display: block;
+  margin: 0.5rem 0;
+  content: "";
+}
+
+/* 段落間距 */
+.markdown p + p {
+  margin-top: 1rem;
+}
+
+/* 標題與段落之間的間距 */
+.markdown h1 + p,
+.markdown h2 + p,
+.markdown h3 + p {
+  margin-top: 1rem;
+}
+
+/* 段落與標題之間的間距（增加段落後面的間距） */
+.markdown p + h1,
+.markdown p + h2,
+.markdown p + h3 {
+  margin-top: 3rem;
+}
+
+/* 標題之間的間距 */
+.markdown h1 + h2 {
+  margin-top: 2rem;
+}
+
+.markdown h2 + h1 {
+  margin-top: 3rem;
+}
+
+/* 深色模式下的文檔樣式 */
+[data-theme='dark'] .markdown h1 {
+  color: var(--ifm-color-primary-light);
+  border-bottom-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .markdown h2 {
+  color: var(--ifm-color-primary-light);
+}
+
+[data-theme='dark'] .markdown h3 {
+  color: var(--ifm-color-primary-light);
+}
+
+[data-theme='dark'] .markdown blockquote {
+  background-color: rgba(74, 125, 184, 0.1);
+  border-left-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .markdown code {
+  background-color: rgba(74, 125, 184, 0.2);
+  color: var(--ifm-color-primary-light);
+}
+
+[data-theme='dark'] .markdown table th {
+  background-color: var(--ifm-color-primary-darkest);
+}
+
+[data-theme='dark'] .markdown table tr:hover {
+  background-color: rgba(74, 125, 184, 0.1);
+}
+
+/* ============================================
+   Hero 區塊搜尋結果寬度設定
+   ============================================ */
+
+/* 確保首頁 Hero 區塊的搜尋結果與搜尋欄同寬 */
+.hero .searchContainer :global(.DocSearch-Modal),
+.hero .searchContainer :global(.DocSearch-Dropdown),
+.hero .searchContainer :global(.DocSearch-Dropdown-Container),
+.hero .searchContainer :global([class*="search-result"]),
+.hero .searchContainer :global([class*="search-dropdown"]) {
+  width: 700px !important;
+  max-width: 700px !important;
+  min-width: 700px !important;
+}
+
+/* 本地搜尋插件的搜尋結果 - 針對 dropdownMenu 類名 */
+.hero .searchContainer :global([class*="dropdownMenu"]) {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  transform: none !important;
+  position: absolute !important;
+  text-align: left !important; /* 文字靠左對齊 */
+}
+
+/* 下拉選單中的所有文字元素靠左對齊 */
+.hero .searchContainer :global([class*="dropdownMenu"]) * {
+  text-align: left !important;
+}
+
+/* 搜尋結果項目靠左對齊 */
+.hero .searchContainer :global([class*="dropdownMenu"]) :global([class*="item"]),
+.hero .searchContainer :global([class*="dropdownMenu"]) :global([class*="result"]),
+.hero .searchContainer :global([class*="dropdownMenu"]) :global([class*="hit"]),
+.hero .searchContainer :global([class*="dropdownMenu"]) a,
+.hero .searchContainer :global([class*="dropdownMenu"]) div {
+  text-align: left !important;
+  justify-content: flex-start !important;
+}
+
+/* ============================================
+   搜尋關鍵字螢光筆高亮效果
+   ============================================ */
+
+/* 關鍵字高亮樣式 - 使用 TailorMed Accent 顏色 */
+.hero .searchContainer :global([class*="dropdownMenu"]) mark,
+.hero .searchContainer :global([class*="dropdownMenu"]) [class*="highlight"],
+.hero .searchContainer :global([class*="dropdownMenu"]) [class*="mark"],
+.searchContainer :global([class*="dropdownMenu"]) mark,
+.searchContainer :global([class*="dropdownMenu"]) [class*="highlight"],
+.searchContainer :global([class*="dropdownMenu"]) [class*="mark"] {
+  background: var(--ifm-color-accent) !important;
+  background-color: var(--ifm-color-accent) !important;
+  color: #ffffff !important;
+  padding: 0.1em 0.2em !important;
+  border-radius: 3px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 1px 2px rgba(187, 39, 73, 0.3) !important;
+}
+
+/* 深色模式下的關鍵字高亮 - 使用 TailorMed Accent 顏色 */
+[data-theme='dark'] .hero .searchContainer :global([class*="dropdownMenu"]) mark,
+[data-theme='dark'] .hero .searchContainer :global([class*="dropdownMenu"]) [class*="highlight"],
+[data-theme='dark'] .searchContainer :global([class*="dropdownMenu"]) mark,
+[data-theme='dark'] .searchContainer :global([class*="dropdownMenu"]) [class*="highlight"] {
+  background: var(--ifm-color-accent) !important;
+  background-color: var(--ifm-color-accent) !important;
+  color: #ffffff !important;
+  box-shadow: 0 1px 2px rgba(232, 90, 122, 0.4) !important;
+}
+
+/* 針對所有可能的關鍵字標記元素 - 使用 TailorMed Accent 顏色 */
+.hero .searchContainer :global([class*="dropdownMenu"]) em,
+.hero .searchContainer :global([class*="dropdownMenu"]) strong,
+.searchContainer :global([class*="dropdownMenu"]) em,
+.searchContainer :global([class*="dropdownMenu"]) strong {
+  background: var(--ifm-color-accent) !important;
+  color: #ffffff !important;
+  padding: 0.1em 0.2em !important;
+  border-radius: 3px !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+  box-shadow: 0 1px 2px rgba(187, 39, 73, 0.3) !important;
+}
+
+/* 確保搜尋結果文字內容靠左 */
+.hero .searchContainer :global([class*="dropdownMenu"]) p,
+.hero .searchContainer :global([class*="dropdownMenu"]) span,
+.hero .searchContainer :global([class*="dropdownMenu"]) div[class*="snippet"],
+.hero .searchContainer :global([class*="dropdownMenu"]) div[class*="content"],
+.searchContainer :global([class*="dropdownMenu"]) p,
+.searchContainer :global([class*="dropdownMenu"]) span,
+.searchContainer :global([class*="dropdownMenu"]) div[class*="snippet"],
+.searchContainer :global([class*="dropdownMenu"]) div[class*="content"] {
+  text-align: left !important;
+  text-align-last: left !important;
+}
+
+@media screen and (max-width: 996px) {
+  .hero .searchContainer :global(.DocSearch-Modal),
+  .hero .searchContainer :global(.DocSearch-Dropdown),
+  .hero .searchContainer :global([class*="search-result"]),
+  .hero .searchContainer :global([class*="search-dropdown"]) {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: auto !important;
+  }
+  
+  .hero .searchContainer :global(.navbar__search) + *,
+  .hero .searchContainer :global(.navbar__search) ~ * {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: auto !important;
+  }
+}

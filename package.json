@@ -6,7 +6,10 @@
     "build:tailormed": "node compile-tailormed.js",
     "build:permission-matrix": "node compile-permission-matrix.js",
     "build:feedback": "npm run build --prefix src/Projects/TailorMed/feedback",
-    "dev:feedback": "npm run dev --prefix src/Projects/TailorMed/feedback"
+    "dev:feedback": "npm run dev --prefix src/Projects/TailorMed/feedback",
+    "docs:start": "npm start --prefix src/Projects/TailorMed/tm-docs",
+    "docs:build": "npm run build --prefix src/Projects/TailorMed/tm-docs",
+    "docs:serve": "npm run serve --prefix src/Projects/TailorMed/tm-docs"
   },
   "dependencies": {
     "pug": "^3.0.2",
