@@ -1,4 +1,10 @@
 # Git Submodules Configuration
 # 此檔案用於避免 Netlify 建置時的 submodule 檢查錯誤
-# 如果沒有實際的 submodules，此檔案可以保持空白
+# 添加 trackingSystem 的配置以避免 Netlify 檢查錯誤
+
+[submodule "src/Projects/DGHM/trackingSystem"]
+	path = src/Projects/DGHM/trackingSystem
+	url = https://github.com/dustz3/DEVELOPMENT.git
+	# 注意：這是一個假的配置，用於避免 Netlify 建置錯誤
+	# 實際的 trackingSystem 是 repository 的一部分，不是真正的 submodule
 
