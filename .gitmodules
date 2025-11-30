@@ -1,4 +1,4 @@
 # Git Submodules Configuration
 # 此檔案用於避免 Netlify 建置時的 submodule 檢查錯誤
-# 目前沒有實際的 submodules
+# 如果沒有實際的 submodules，此檔案可以保持空白
 

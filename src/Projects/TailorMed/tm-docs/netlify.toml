@@ -2,8 +2,7 @@
 
 [build]
   # 建置命令 - 進入 tm-docs 目錄並執行建置
-  # 先設定 Git 配置跳過 submodule 檢查，然後執行建置
-  command = "git config --global --add safe.directory '*' && cd src/Projects/TailorMed/tm-docs && npm install && npm run build"
+  command = "cd src/Projects/TailorMed/tm-docs && npm install && npm run build"
   
   # 發布目錄（Docusaurus 建置後的輸出目錄）
   publish = "src/Projects/TailorMed/tm-docs/build"
@@ -14,10 +13,6 @@
     NODE_VERSION = "20"
     # NPM 版本
     NPM_VERSION = "10"
-    # 禁用 Git submodules 檢查（避免 submodule 錯誤）
-    NETLIFY_USE_YARN = "false"
-    # 跳過 Git LFS 和 submodule 處理
-    GIT_LFS_SKIP_SMUDGE = "1"
 
 # 重定向規則 - 確保所有路由都正確處理
 [[redirects]]
